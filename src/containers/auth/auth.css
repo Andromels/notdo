@@ -9,8 +9,9 @@
 .auth .gif {
  background-color: rgb(255, 255, 255);
  width: 50%;
- height: 50%;
- background-image: url("");
+ height: 80%;
+ background-image: url("https://images.pexels.com/photos/18495/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+ background-position: center;
 }
 .auth .form {
   display: flex;
@@ -30,7 +31,7 @@
   padding: 0.7rem;
   border-radius: 10px;
   border: none;
-  background-color: blueviolet;
+  background-color: rgb(148, 108, 0);
   color: white;
   margin-bottom: 2rem;
 }

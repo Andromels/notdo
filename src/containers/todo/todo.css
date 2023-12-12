@@ -21,7 +21,7 @@
 }
 .navbar .nav-links button {
   border: none;
-  background-color: red;
+  background-color: rgb(255, 204, 63);
   border-radius: 10px;
   padding: 0.5rem 1rem;
   color: white;
@@ -30,7 +30,7 @@
 .tlist {
   width: 100%;
   height: 70vh;
-  background-color: rgba(148, 232, 13, 0.973);
+  background-color: rgba(255, 255, 255, 0.973);
   display: flex;
   gap: 1rem;
   flex-direction: column;
@@ -42,7 +42,7 @@
 .tform {
   width: 100%;
   height: 10vh;
-  background-color: rgb(17, 43, 238);
+  background-color: rgba(255, 255, 255, 0.973);
   display: flex;
   justify-content: center;
   padding: 1rem;
@@ -56,12 +56,14 @@
   border: none;
   padding: 1rem;
   height: 3rem;
+  background-color: rgba(255, 255, 255, 0.973);
+  border-color: rgba(0, 19, 41, 0.973);
 }
 .tform button {
   padding: 1rem 2rem;
   border-radius: 10px;
   border: none;
-  background-color: rgba(233, 145, 12, 0.825);
+  background-color: rgb(255, 204, 63);
   color: white;
   height: 3rem;
 }
@@ -72,8 +74,8 @@
   justify-content: space-between;
   padding: 1rem;
   border-radius: 10px;
-  background-color: rgb(10, 250, 10);
-  color: black;
+  background-color: rgba(0, 19, 41, 0.973);
+  color: rgb(255, 255, 255);
   transition: 0.2s;
 }
 .task-actions {
@@ -81,5 +83,5 @@
   gap: 1rem;
 }
 .done {
-  background-color: rgb(212, 57, 14);
+  background-color: rgb(255, 204, 63);
 }

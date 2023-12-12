@@ -25,6 +25,7 @@ function Login({ setLogin }) {
   };
   return (
     <div className="form">
+      <h1>JUST DO NOTHING</h1>
       <label htmlFor="email">Email:</label>
       <input
         type="email"

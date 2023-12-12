@@ -7,7 +7,7 @@ export default function Navbar({ user, logout }) {
     <nav className="navbar">
       <div className="nav-logo">
         <FaStar size={20} />
-        <h1>NotDo</h1>
+        <h1>JUST DO NOTHING</h1>
       </div>
       <div className="nav-links">
         <p>{user.email}</p>
