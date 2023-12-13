@@ -1,3 +1,4 @@
+// TaskForm.js
 import { useState } from "react";
 import "./todo.css";
 
@@ -5,9 +6,12 @@ export default function TaskForm({ handleAdd }) {
   const [task, setTask] = useState("");
 
   const addTask = () => {
-    handleAdd(task);
-    setTask("");
+    if (task.trim() !== "") {
+      handleAdd(task);
+      setTask("");
+    }
   };
+
   return (
     <div className="tform">
       <input
