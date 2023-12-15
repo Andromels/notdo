@@ -1,5 +1,5 @@
 // Notification.js
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import './notification.css';
 
 export default function Notification({ message, onClose }) {

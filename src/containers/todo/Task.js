@@ -1,7 +1,7 @@
 // Task.js
 
 import { FaCheck, FaTrash, FaEdit } from "react-icons/fa";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import './task.css';
 
 export default function Task({
