@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { v4 as uuidv4 } from "uuid"; // Import the uuid library
+import { v4 as uuidv4 } from "uuid";
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -64,16 +64,17 @@ export const onTasksSnapshot = (userId, setTasks) => {
   const unsubscribe = onSnapshot(userTasksRef, (docSnapshot) => {
     if (docSnapshot.exists()) {
       const userData = docSnapshot.data();
-      const tasksData = userData.tasks || []; // Assuming "tasks" is the name of the nested array
+      const tasksData = userData.tasks || [];
       setTasks(tasksData);
     } else {
-      // Handle the case where the document doesn't exist
       console.log(`No tasks found for user with ID: ${userId}`);
       setTasks([]);
     }
   });
   return unsubscribe;
 };
+
+// Replace the existing createTask function in your firebase.js file with this one
 
 export const createTask = async (userId, task) => {
   try {
@@ -90,13 +91,17 @@ export const createTask = async (userId, task) => {
         tasks: [newTask, ...docSnapshot.data().tasks],
       });
     } else {
-      await setDoc(userTasksRef, { tasks: [newTask] });
+      await setDoc(userTasksRef, {
+        tasks: [newTask],
+        accountCreationDate: Timestamp.now(), // Add this line to set the account creation date
+      });
     }
     console.log("Task created successfully!");
   } catch (error) {
     console.error("Error creating task:", error);
   }
 };
+
 
 export const updateTask = async (userId, taskId, updatedTask) => {
   try {
@@ -134,7 +139,6 @@ export const deleteTask = async (userId, taskId) => {
       const updatedTasks = docSnapshot
         .data()
         .tasks.filter((task) => task.id !== taskId);
-      // Update the document with the filtered tasks
       await updateDoc(userTasksRef, { tasks: updatedTasks });
       console.log("Task deleted successfully!");
     } else {

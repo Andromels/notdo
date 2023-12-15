@@ -1,13 +1,15 @@
 // Todo.js
+
 import React, { useState, useEffect } from "react";
 import "./todo.css";
 import Navbar from "./Navbar";
 import TaskList from "./TaskList";
 import TaskForm from "./TaskForm";
+import TaskCounter from "./TaskCounter";
 import { onTasksSnapshot, createTask, updateTask, deleteTask } from "../../firebase";
 
 export default function Todo({ user, logout }) {
-  const [tasks, setTasks] = useState([0]);
+  const [tasks, setTasks] = useState([]);
   const [darkMode, setDarkMode] = useState(false);
 
   const handleAdd = (newTask) => {
@@ -29,15 +31,27 @@ export default function Todo({ user, logout }) {
   useEffect(() => {
     if (user.uid) {
       const unsubscribe = onTasksSnapshot(user.uid, setTasks);
-      return () => unsubscribe(); // Cleanup function to unsubscribe from the snapshot listener
+      return () => unsubscribe();
     }
   }, [user.uid]);
 
   return (
     <div className={`todo ${darkMode ? "dark-mode" : ""}`}>
       <Navbar user={user} logout={logout} toggleDarkMode={toggleDarkMode} />
-      <TaskList tasks={tasks} handleUpdate={handleUpdate} handleDelete={handleDelete} />
-      <TaskForm handleAdd={handleAdd} />
+      <div className="content-container">
+        <div className="left-column">
+          <TaskList
+            tasks={tasks}
+            handleUpdate={handleUpdate}
+            handleDelete={handleDelete}
+            user={user}
+          />
+          <TaskForm handleAdd={handleAdd} />
+        </div>
+        <div className="right-column">
+          <TaskCounter tasks={tasks} />
+        </div>
+      </div>
     </div>
   );
 }

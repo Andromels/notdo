@@ -1,0 +1,58 @@
+/* ProfileTab.css */
+
+.profile-tab-container {
+  background-color: #fff;
+  border: 1px solid #e1e8ed;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 20px;
+  display: flex;
+  
+}
+
+.profile-header {
+  display: flex;
+  flex-direction: column; /* Change to column layout */
+  align-items: flex-start; /* Align items to the start */
+}
+
+.profile-info h2 {
+  margin: 0;
+  font-size: 20px;
+  color: #1c2938;
+}
+
+.profile-info p {
+  margin: 5px 0 0;
+  font-size: 14px;
+  color: #657786;
+}
+
+.profile-dropdown {
+  margin-top: 10px;
+}
+
+.profile-dropdown button {
+  background-color: #1da1f2;
+  color: #fff;
+  padding: 8px 12px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 10px; /* Add margin to separate from the profile info */
+}
+
+.dropdown-content {
+  display: flex;
+  flex-direction: column; /* Change to column layout */
+  align-items: flex-start; /* Align items to the start */
+}
+
+.dropdown-content p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #1c2938;
+}
+

@@ -1,12 +1,15 @@
 // Task.js
+
 import { FaCheck, FaTrash, FaEdit } from "react-icons/fa";
 import { useState, useEffect } from "react";
+import './task.css';
 
 export default function Task({
   task,
   handleDelete,
   handleUpdate,
-  handleEdit,
+  showNotification,
+  user,
 }) {
   const [currentTask, setTask] = useState(task);
   const [isEditing, setEditing] = useState(false);
@@ -18,21 +21,31 @@ export default function Task({
     handleUpdate(currentTask.id, updatedTask);
     setEditing(false);
 
-    // Notify the user
-    window.alert(`Task "${currentTask.text}" has been edited.`);
+    // Show the notification
+    showNotification(`Task "${currentTask.text}" has been edited. Timestamp: ${formatTimestamp(updatedTask.date_added)}`);
   };
 
   const handleDeleteConfirm = () => {
     handleDelete(currentTask.id);
 
-    // Notify the user
-    window.alert(`Task "${currentTask.text}" has been deleted.`);
+    // Show the notification
+    showNotification(`Task "${currentTask.text}" has been deleted. Timestamp: ${formatTimestamp(currentTask.date_added)}`);
+  };
+
+  const formatTimestamp = (timestamp) => {
+    if (timestamp && typeof timestamp.toDate === 'function') {
+      // Firebase Timestamp
+      return timestamp.toDate().toLocaleString();
+    } else if (timestamp instanceof Date) {
+      // JavaScript Date
+      return timestamp.toLocaleString();
+    }
+    return 'Unknown Timestamp';
   };
 
   return (
     <div className={task.done ? "task done" : "task undone"}>
       {isEditing ? (
-        // Edit form for task text
         <div className="edit-form">
           <input
             type="text"
@@ -42,19 +55,17 @@ export default function Task({
           <button onClick={handleEditConfirm}>Save</button>
         </div>
       ) : (
-        // Regular task view
         <>
           <p>{task.text}</p>
+          <p className="timestamp">Added on: {formatTimestamp(task.date_added)}</p>
           <div className="task-actions">
             <FaCheck
               size={18}
               onClick={() => {
-                const updatedTask = { ...currentTask, done: !currentTask.done };
+                const updatedTask = { ...currentTask, done: !currentTask.done, date_done: new Date() };
                 setTask(updatedTask);
                 handleUpdate(currentTask.id, updatedTask);
-
-                // Notify the user
-                window.alert(`Task "${currentTask.text}" has been marked as ${updatedTask.done ? "done" : "undone"}.`);
+                showNotification(`Task "${currentTask.text}" has been marked as ${updatedTask.done ? "done" : "undone"}. Timestamp: ${formatTimestamp(updatedTask.date_done)}`);
               }}
             />
             <FaTrash size={18} onClick={handleDeleteConfirm} />

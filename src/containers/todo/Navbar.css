@@ -1,0 +1,78 @@
+/* Navbar.css */
+
+.navbar {
+  width: 100%;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s, color 0.3s; /* Add transition for smooth color changes */
+}
+
+.navbar.dark-mode {
+  background-color: #091929; /* Twitter-like dark mode background color */
+  color: white;
+}
+
+.navbar.light-mode {
+  background-color: #ffffff; /* Twitter-like navbar background color in light mode */
+  color: #14171a; /* Twitter-like text color in light mode */
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-logo h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1da1f2; /* Twitter-like logo color */
+}
+
+.navbar .nav-links {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.profile-pic {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.nav-links p {
+  margin: 0;
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: #000000; /* Twitter-like text color */
+}
+
+.nav-links button {
+  border: none;
+  border-radius: 999px; /* Twitter-like button border-radius */
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.navbar.dark-mode button {
+  background-color: #ffffff; /* Twitter-like button color in dark mode */
+  color: #14171a; /* Twitter-like text color in dark mode */
+}
+
+.navbar.light-mode button {
+  background-color: #1da1f2; /* Twitter-like button color in light mode */
+  color: white;
+}
+
+.dark-mode {
+  background-color: #14171a; /* Twitter-like dark mode background color */
+  color: white;
+}

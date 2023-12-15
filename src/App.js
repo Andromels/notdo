@@ -1,7 +1,8 @@
+// Replace the existing App.js file with this one
+
 import "./App.css";
 import Auth from "./containers/auth/Auth";
 import Todo from "./containers/todo/Todo";
-
 import { useEffect, useState } from "react";
 import { auth } from "./firebase";
 
@@ -21,6 +22,7 @@ function App() {
     });
     return () => unsubscribe();
   }, []);
+
   return (
     <div className="App">
       {user ? <Todo user={user} logout={logout} /> : <Auth />}
